@@ -27,11 +27,11 @@ public class Main {
 
         BufferedReader br = null;
         try {
-             br = new BufferedReader(new FileReader("input.txt"));
+            br = new BufferedReader(new FileReader("code_off-1.in"));
             StringBuilder sbOutputResult = new StringBuilder();
             //get first line
             String line =  br.readLine();
-            int numberOfStrings = Integer.parseInt(line);
+            // int numberOfStrings = Integer.parseInt(line);
 
             List<String> allStringsList = new ArrayList<String>();
             while ( (line = br.readLine()) != null) {
@@ -50,7 +50,7 @@ public class Main {
                 }
             }
 
-            File file = new File("outputFile.txt");
+            File file = new File("code_off-1.out");
 
             // if file doesnt exists, then create it
             if (!file.exists()) {
@@ -64,7 +64,8 @@ public class Main {
 
 
         } catch (Exception e){
-            System.out.println(e.getMessage());
+            e.printStackTrace();
+
         }finally {
             try {
                 br.close();
@@ -78,7 +79,7 @@ public class Main {
         String ALPHABET ="a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u,v,w,x,y,z";
         String[] ALPHABET_ARRAY = ALPHABET.split(",");
 
-         alphabetMap = new HashMap<String,Integer>();
+        alphabetMap = new HashMap<String,Integer>();
         for(int i =0; i< ALPHABET_ARRAY.length; i++){
             alphabetMap.put(ALPHABET_ARRAY[i],i);
             alphabetMap.put(ALPHABET_ARRAY[i].toUpperCase(),i +1);
@@ -88,6 +89,8 @@ public class Main {
     private boolean isPalindrome( String inputLine){
         boolean result = false;
 
+        return inputLine.equalsIgnoreCase(reverseString(inputLine));
+/*
         if((inputLine.length() %2) == 0 ){
             String firstValue = inputLine.substring(0,inputLine.length()/2);
 
@@ -106,6 +109,7 @@ public class Main {
         }
 
         return  result;
+        */
     }
 
     private String reverseString(String input){
